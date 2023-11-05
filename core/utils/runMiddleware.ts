@@ -1,10 +1,10 @@
 export type TMiddleware = (next: () => any) => any;
 
-export async function runMiddleware(
-  list: TMiddleware[],
+export async function runMiddleware<T extends TMiddleware>(
+  list: T[],
   index = 0,
-  result = { out: undefined }
-): Promise<any> {
+  result: { out: ReturnType<T> | undefined; } = { out: undefined }
+) {
   const middleware = list[index];
 
   if (!middleware)
