@@ -3,7 +3,7 @@ import { runHttpMiddleware, THttpMiddleware, TResult } from "core/utils/runHttpM
 
 import { Context } from "./Context";
 
-export type TErrorMiddleware = (error: any, ctx: Context) => TResult | Promise<TResult>;
+export type TErrorMiddleware = (error: any, ctx: Context) => ReturnType<THttpMiddleware>;
 
 export class Application {
   #list: THttpMiddleware[] = [];
